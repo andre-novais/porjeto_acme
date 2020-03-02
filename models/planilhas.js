@@ -22,8 +22,11 @@ class Planilha{
     }
     insere(json){
         if (this.valida(json)===true){
-        const sql = 'INSERT INTO T_financeiro SET ?'
-        this.conn.query(sql,[json],(err,resultado) => {
+        const parametros = []
+        parametros.push(json['DS_tipo'])
+        parametros.push(json['VL_valor'])
+        const sql = 'INSERT INTO T_financeiro (DS_tipo, VL_valor) values (1$,2$)'
+        this.conn.query(sql,parametros,(err,resultado) => {
             if(err) {
                 console.log(err)
             } else {
