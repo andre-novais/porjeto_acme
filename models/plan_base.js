@@ -5,14 +5,14 @@ class Plan_base{
         this.table_name = 'placeholder'
     }
     _valida(json){
-        for(let key in json){
-            if (!(key in Object.keys(json))){
+        if (Object.keys(json).length != this.items.length){
+            return `são necessarios os items ${this.items.join()}, e nada mais`
+        }
+        for(let key in this.items){
+            if (!(json.hasOwnProperty(key))){
                 return `são necessarios os items ${this.items.join()}`
-            } else {
-                if (Object.keys(json).length != this.items.length){
-                    return `são necessarios os items ${this.items.join()}, e nada mais`
-                } else return true
             }
+        return true
         }
     }
     insere(json, res){
