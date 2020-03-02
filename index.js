@@ -6,9 +6,11 @@ const coneccao = require('./infraestrutura/coneccao.js')
 
 const planilha = require('./infraestrutura/planilhas.js')
 
-coneccao.conect()
+coneccao.connect()
 
 planilha.init(coneccao)
+
+planilha.cria_planilha()
 
 
 const port = process.env.PORT || 3000;

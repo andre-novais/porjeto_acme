@@ -1,4 +1,4 @@
-const Client = require('pg')
+const {Client} = require('pg')
 
 const str_local_connection = 'postgresql:andre:quejo9572@database.server.com:5432/postgres'
 
