@@ -12,8 +12,6 @@ coneccao.connect()
 
 planilha(coneccao)
 
-const hey = "hey"
-
 const port = process.env.PORT || 3000;
 
 app.listen(port, function(){

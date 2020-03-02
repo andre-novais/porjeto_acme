@@ -29,4 +29,4 @@ class Plan_base{
     }
 }
 
-module.exports = new Plan_base
+module.exports = new Plan_base()
