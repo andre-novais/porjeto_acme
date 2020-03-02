@@ -10,3 +10,5 @@ class Financeiro extends Plan_base {
         super.insere(json)
     }
 }
+
+module.exports = Financeiro
