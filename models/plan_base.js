@@ -10,6 +10,7 @@ class Plan_base{
         }
         for(let key in this.items){
             if (!(json.hasOwnProperty(key))){
+                console.log(key)
                 return `são necessarios os items ${this.items.join()}`
             }
         return true
