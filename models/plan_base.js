@@ -25,7 +25,7 @@ class Plan_base{
                     res.send(resultado)
                 }
             })
-        } else {res.send(this.valida(json))}
+        } else {res.send(this._valida(json))}
     }
 }
 
