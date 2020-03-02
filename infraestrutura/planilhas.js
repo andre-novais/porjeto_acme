@@ -4,7 +4,7 @@ class Planilha{
         this.cria_planilha()
     }
     cria_planilha(){
-        const sql = 'CREATE TABLE IF NOT EXISTS T_financeiro (id SERIAL PRIMARY KEY, DS_tipo varchar(50) not NULL, VL_valor integer not null, occured_at epoch default extract(epoch from now()))'
+        const sql = 'CREATE TABLE IF NOT EXISTS T_financeiro (id SERIAL PRIMARY KEY, DS_tipo varchar(50) not NULL, VL_valor integer not null, occured_at extract(epoch from now()))'
         this.conn.query(sql, erro => {
             if(erro) {
                 console.log(erro)
