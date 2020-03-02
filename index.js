@@ -10,7 +10,7 @@ const planilha = require('./models/financeiro.js')
 
 coneccao.connect()
 
-planilha.init(coneccao)
+planilha(coneccao)
 
 const hey = "hey"
 

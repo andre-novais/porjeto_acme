@@ -1,5 +1,5 @@
 class Plan_base{
-    init(conn){
+    constructor(conn){
         this.conn = conn
         this.items = ["placeholder"]
         this.table_name = 'placeholder'
