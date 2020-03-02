@@ -1,5 +1,5 @@
 const planilha = require('../models/financeiro.js')
-const conn = require('./infraestrutura/coneccao.js')
+const conn = require('../infraestrutura/coneccao.js')
 conn.connect()
 var instancia_planilha = new planilha(conn)
 
