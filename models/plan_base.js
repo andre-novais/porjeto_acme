@@ -8,9 +8,9 @@ class Plan_base{
         if (Object.keys(json).length != this.items.length){
             return `são necessarios os items ${this.items.join()}, e nada mais`
         }
-        for(let key in this.items){
-            if (!(json.hasOwnProperty(key))){
-                console.log(key)
+        for(let i = 0; i = this.items.length;i++){
+            if (!(json.hasOwnProperty(this.items[i]))){
+                console.log(this.items[i])
                 return `são necessarios os items ${this.items.join()}`
             }
         return true
