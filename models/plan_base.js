@@ -6,11 +6,11 @@ class Plan_base{
     }
     _valida(json){
         for(let key in json){
-            if (!(key in this.items)){
+            if (!(key in Object.keys(json))){
                 return `são necessarios os items ${this.items.join()}`
             } else {
                 if (Object.keys(json).length != this.items.length){
-                    return `são necessarios os items ${this.items.join()}`
+                    return `são necessarios os items ${this.items.join()}, e nada mais`
                 } else return true
             }
         }
@@ -18,6 +18,7 @@ class Plan_base{
     insere(json, res){
         if (this._valida(json)===true){
             let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${Object.values(json)})`
+            console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     res.send(erro)
