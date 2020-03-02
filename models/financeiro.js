@@ -6,8 +6,8 @@ class Financeiro extends Plan_base {
         this.items = ["DS_tipo", "VL_valor"]
         this.table_name = "T_financeiro"
     }
-    insere(json){
-        super.insere(json)
+    insere(json, res){
+        super.insere(json, res)
     }
 }
 
