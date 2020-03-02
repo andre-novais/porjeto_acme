@@ -4,11 +4,11 @@ const cunstom_app = require('./config/config.js')
 
 const app = cunstom_app()
 
-const coneccao = require('./infraestrutura/coneccao.js')
+const conn = require('./infraestrutura/coneccao.js')
 
 
 
-coneccao.connect()
+conn.connect()
 
 
 //var planilha = require('./models/financeiro.js')
