@@ -6,7 +6,7 @@ const app = cunstom_app()
 
 const coneccao = require('./infraestrutura/coneccao.js')
 
-const planilha = require('./models/planilhas.js')
+const planilha = require('./models/financeiro.js')
 
 coneccao.connect()
 
