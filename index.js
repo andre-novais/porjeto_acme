@@ -1,3 +1,5 @@
+console.log("starting app")
+
 const cunstom_app = require('./config/config.js')
 
 const app = cunstom_app()
