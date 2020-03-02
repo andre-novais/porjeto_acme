@@ -9,7 +9,7 @@ class Planilha{
             if(erro) {
                 console.log(erro)
             } else {
-                console.log('Tabela Atendimentos criada com sucesso')
+                console.log('Tabela T_financeiro esta no ar')
             }
         })
     }
@@ -25,9 +25,9 @@ class Planilha{
         const sql = 'INSERT INTO T_financeiro SET ?'
         this.conn.query(sql,json,(err,resultado) => {
             if(err) {
-                console.log(erro)
+                console.log(err)
             } else {
-                console.log(resultados)
+                console.log(resultado)
             }
         })
     }else console.log(this.valida(json))}

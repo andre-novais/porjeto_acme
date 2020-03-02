@@ -6,7 +6,7 @@ module.exports = app => {
         ))
 
     app.post('/financeiro', (req, res) => {
-        console.log('Atendimento enviado')
+        console.log('Evento enviado')
         console.log(req.body)
         planilha.insere(req.body)
         res.send('Post atendimento')
