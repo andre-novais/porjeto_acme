@@ -11,8 +11,8 @@ const coneccao = require('./infraestrutura/coneccao.js')
 coneccao.connect()
 
 
-var planilha = require('./models/financeiro.js')
-var instancia_planilha = new planilha(coneccao)
+//var planilha = require('./models/financeiro.js')
+//var instancia_planilha = new planilha(coneccao)
 
 
 const port = process.env.PORT || 3000;

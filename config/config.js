@@ -11,6 +11,6 @@ module.exports = function() {
  consign()
    .include('controler')
    .into(app)
- 
+  
  return app
 }
