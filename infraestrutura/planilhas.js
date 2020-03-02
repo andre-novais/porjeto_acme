@@ -1,9 +1,10 @@
 class Planilha{
     init(conn){
         this.conn = conn
+        this.cria_planilha()
     }
     cria_planilha(){
-        const sql = 'CREATE TABLE T_financeiro IF NOT EXISTS (id PRIMARY KEY AUTO INCREMENT, DS_tipo varchar(50) not NULL, VL_valor integer not null, occured_at epoch default extract(epoch from now()))'
+        const sql = 'CREATE TABLE IF NOT EXISTS T_financeiro (id PRIMARY KEY AUTO INCREMENT, DS_tipo varchar(50) not NULL, VL_valor integer not null, occured_at epoch default extract(epoch from now()))'
         this.conexao.query(sql, erro => {
             if(erro) {
                 console.log(erro)
