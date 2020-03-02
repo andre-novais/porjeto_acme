@@ -15,8 +15,8 @@ class Plan_base{
                 console.log(this.items)
                 return `são necessarios os items ${this.items.join()}`
             }
-        return true
         }
+        return true
     }
     insere(json, res){
         if (this._valida(json)===true){
