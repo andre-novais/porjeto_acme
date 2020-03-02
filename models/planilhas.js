@@ -13,6 +13,24 @@ class Planilha{
             }
         })
     }
+    valida(json){
+        if ('VL_valor' in json && 'DS_tipo' in json){
+            return true
+        } else {
+            return "são necessarios os campos DS_tipo e VL_valor"
+        }
+    }
+    insere(json){
+        if (this.valida(json)===true){
+        const sql = 'INSERT INTO T_financeiro SET ?'
+        this.conn.query(sql,json,(err,resultado) => {
+            if(erro) {
+                console.log(erro)
+            } else {
+                console.log(resultados)
+            }
+        })
+    }else console.log(this.valida(json))}
 }
 
 module.exports = new Planilha
