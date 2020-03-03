@@ -3,9 +3,7 @@ const conn = require('../infraestrutura/coneccao.js')
 var instancia_planilha = new planilha(conn)
 
 module.exports = app => {
-    app.get('/financeiro', (req, res) => res.send(
-        `<h1>hello</h1>`
-        ))
+    app.get('/financeiro', (req, res) => res.send('../templates/financeiro.html'))
     app.get('/financeiro/:id', (req,res) => {
         const id = parseInt(req.params.id)
         instancia_planilha.pega_por_id(id, res)
