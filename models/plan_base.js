@@ -38,9 +38,10 @@ class Plan_base{
             if(erro) {
                 res.send(erro)
             } else {
-                res.send(resultado)
+                res.send(resultado.rows[0])
         }})
     }
+
 }
 
 module.exports = Plan_base
