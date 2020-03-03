@@ -2,8 +2,10 @@ const planilha = require('../models/financeiro.js')
 const conn = require('../infraestrutura/coneccao.js')
 var instancia_planilha = new planilha(conn)
 
+const meu_dado = "meu dado"
+
 module.exports = app => {
-    app.get('/financeiro', (req, res) => res.render('../templates/financeiro.html', (erro, html) => {
+    app.get('/financeiro', (req, res) => res.render('../templates/financeiro.html', meu_dado, (erro, html) => {
         res.send(html)
     }))
     app.get('/financeiro/:id', (req,res) => {
