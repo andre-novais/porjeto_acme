@@ -9,14 +9,15 @@ module.exports = app => {
     app.get('/financeiro/:id', (req,res) => {
         const id = parseInt(req.params.id)
         instancia_planilha.pega_por_id(id, res)
-    }
-    )
-    
+    })
     app.post('/financeiro', (req, res) => {
         console.log('Evento enviado')
         console.log(req.body)
         instancia_planilha.insere(req.body, res)
     })
-     
+    app.put('/financeiro/:id', (req,res)=>{
+        const id = parseInt(req.params.id)
+        instancia_planilha.altera(id, req.body,res)
+    })
      
 }

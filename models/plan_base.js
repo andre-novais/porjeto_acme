@@ -41,7 +41,22 @@ class Plan_base{
                 res.send(resultado.rows[0])
         }})
     }
+    altera(id,json,res){
+        if(this._valida(json)===true){
+            const converte = (str) => (typeof(str) == "string")? "'"+str+"'":str;
+            const valores = Object.values(json).map(converte)        
 
+            const sql = `UPDATE ${this.table_name} SET (${Object.keys(json)}) = (${valores}) WHERE id = ${id}`
+            
+            this.conn.query(sql, (erro, resultado) => {
+                if(erro) {
+                    res.send(erro)
+                } else {
+                    res.send(resultado)
+                }
+            })
+        }
+    }
 }
 
 module.exports = Plan_base
