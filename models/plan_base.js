@@ -6,9 +6,9 @@ class Plan_base{
         if (Object.keys(json).length != this.items.length){
             return `são necessarios os items ${this.items.join()}, e nada mais`
         }
-        for(let i = 0; i = this.items.length;i++){
-            if (json.indexOf(this.items[i])>=0){
-                console.log(this.items[i])
+        for(let [key,value]of Object.entries(json)){
+            if (this.items.indexOf(key)>=0){
+                console.log(key)
                 console.log(i)
                 console.log(this.items)
                 return `são necessarios os items ${this.items.join()}`
