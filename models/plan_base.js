@@ -57,6 +57,15 @@ class Plan_base{
             })
         }
     }
+    deleta(id, res){
+        const sql = `DELETE FROM ${this.table_name} WHERE id = ${id}`
+        this.conn.query(sql, (erro, resultado) => {
+            if(erro) {
+                res.send(erro)
+            } else {
+                res.send(resultado.rows[0])
+        }})        
+    }
 }
 
 module.exports = Plan_base

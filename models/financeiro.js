@@ -15,6 +15,9 @@ class Financeiro extends Plan_base {
     altera(id,json,res){
         super.altera(id,json,res)
     }
+    deleta(id,res){
+        super.deleta(id,res)
+    }
 }
 
 module.exports = Financeiro

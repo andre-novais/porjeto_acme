@@ -19,5 +19,8 @@ module.exports = app => {
         const id = parseInt(req.params.id)
         instancia_planilha.altera(id, req.body,res)
     })
-     
+    app.delete('/financeiro/:id',(req,res)=>{
+        const id = parseInt(req.params.id)
+        instancia_planilha.deleta(id,res)
+    })     
 }
