@@ -9,7 +9,6 @@ class Plan_base{
         for(let [key,value]of Object.entries(json)){
             if (this.items.indexOf(key)>=0){
                 console.log(key)
-                console.log(i)
                 console.log(this.items)
                 return `são necessarios os items ${this.items.join()}`
             }
