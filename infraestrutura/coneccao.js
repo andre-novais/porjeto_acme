@@ -7,4 +7,8 @@ const coneccao = new Client({
     ssl: true,
 })
 
+const financeiro = new(requiere("../models/financeiro.js"))(coneccao)
+
+
+
 module.exports = coneccao
