@@ -17,7 +17,11 @@ class Plan_base{
     }
     insere(json, res){
         if (this._valida(json)===true){
-            let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${Object.values(json)})`
+            
+            const converte = (str) => (typeof(str) == String)? "'"+str+"'":str;
+            const valores = Object.values(json).map(converte)
+
+            let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores})`
             console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
