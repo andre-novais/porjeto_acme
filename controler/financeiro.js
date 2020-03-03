@@ -4,7 +4,7 @@ var instancia_planilha = new planilha(conn)
 
 module.exports = app => {
     app.get('/financeiro', (req, res) => res.send(
-        'Você está na rota de atendimentos e está realizando um GET'
+        `<h1>hello</h1>`
         ))
     app.get('/financeiro/:id', (req,res) => {
         const id = parseInt(req.params.id)
