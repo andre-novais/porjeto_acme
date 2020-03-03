@@ -1,8 +1,6 @@
 class Plan_base{
     constructor(conn){
         this.conn = conn
-        this.items = ["placeholder"]
-        this.table_name = 'placeholder'
     }
     _valida(json){
         if (Object.keys(json).length != this.items.length){
