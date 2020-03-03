@@ -47,7 +47,7 @@ class Plan_base{
             const valores = Object.values(json).map(converte)        
 
             const sql = `UPDATE ${this.table_name} SET (${Object.keys(json)}) = (${valores}) WHERE id = ${id}`
-            
+            console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     res.send(erro)
