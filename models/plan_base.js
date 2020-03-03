@@ -2,12 +2,12 @@ class Plan_base{
     constructor(conn){
         this.conn = conn
     }
-    _valida(json){
+    _valida(json){        
         if (Object.keys(json).length != this.items.length){
             return `são necessarios os items ${this.items.join()}, e nada mais`
         }
         for(let i = 0; i = this.items.length;i++){
-            if (!(json.hasOwnProperty(this.items[i]))){
+            if (json.indexOf(this.items[i])>=0){
                 console.log(this.items[i])
                 console.log(i)
                 console.log(this.items)
