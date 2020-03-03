@@ -34,12 +34,12 @@ class Plan_base{
     }
     pega_por_id(id,res){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
-        res.send(this.conn.query(sql, (erro, resultado) => {
+        this.conn.query(sql, (erro, resultado) => {
             if(erro) {
                 res.send(erro)
             } else {
                 res.send(resultado)
-        }}))
+        }})
     }
 }
 

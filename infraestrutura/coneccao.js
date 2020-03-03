@@ -7,7 +7,10 @@ const coneccao = new Client({
     ssl: true,
 })
 
-
+var tabelas = [
+    'CREATE TABLE IF NOT EXISTS T_financeiro (id SERIAL PRIMARY KEY, DS_tipo varchar(50) not NULL, VL_valor integer not null, occured_at int default extract(epoch from now()))',
+    
+]
 
 
 module.exports = coneccao
