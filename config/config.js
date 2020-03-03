@@ -7,7 +7,11 @@ module.exports = function() {
  
  app.use(bodyParser.json())
  app.use(bodyParser.urlencoded({ extended: true }))
- 
+ app.engine('html', require('ejs').renderFile);
+ app.set('view engine', 'html');
+
+
+
  consign()
    .include('controler')
    .into(app)
