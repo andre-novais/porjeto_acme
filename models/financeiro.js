@@ -9,6 +9,9 @@ class Financeiro extends Plan_base {
     insere(json, res){
         super.insere(json, res)
     }
+    pega_por_id(id, res){
+        super.pega_por_id(id, res)
+    }
 }
 
 module.exports = Financeiro

@@ -32,6 +32,15 @@ class Plan_base{
             })
         } else {res.send(this._valida(json))}
     }
+    pega_por_id(id,res){
+        const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
+        res.send(this.conn.query(sql, (erro, resultado) => {
+            if(erro) {
+                res.send(erro)
+            } else {
+                res.send(resultado)
+        }}))
+    }
 }
 
 module.exports = Plan_base
