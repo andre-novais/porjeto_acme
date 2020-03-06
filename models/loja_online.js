@@ -44,6 +44,7 @@ class Loja_online extends Plan_base {
     _valida_produtos(json,res){
         try{
             for (var key in Object.keys(json)){
+                console.log(json[key],json[key].hasOwnProperty("quantidade"),json[key].hasOwnProperty("preco"))
                 if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
                     res.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
                 }
