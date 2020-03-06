@@ -15,7 +15,8 @@ module.exports = app => {
         console.log(req.body)
         resposta = instancia_planilha.insere(req.body, resposta)
         console.log(resposta)
-        res.send(resposta)
+        res.send("hey")
+        res.send("ho")
     })
     app.put('/financeiro/:id', (req,res)=>{
         const id = parseInt(req.params.id)
