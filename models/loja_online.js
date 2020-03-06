@@ -60,6 +60,7 @@ class Loja_online extends Plan_base {
             soma += parseint(json[key]["quantidade"]) * parseInt(json[key]["preco"])
         }
         return soma
+        
     }
 }
 
