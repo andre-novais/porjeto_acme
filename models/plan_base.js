@@ -33,13 +33,13 @@ class Plan_base{
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
-                    this.str_resposta += "\n"+ JSON.stringify(res_json)
-                    this.str_resposta += "heydude"
+                    resposta[`resultado ${this.table_name}`] = res_json
                 }
             })
-        } else {resposta += "\n" + this._valida(json)}
+        } else {resposta[`validacao ${this.table_name}`] = this._valida(json)}
         console.log(this.str_resposta )
         console.log("test")
+        return resposta
     }
     pega_por_id(id,resposta){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`

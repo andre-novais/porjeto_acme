@@ -10,8 +10,7 @@ class Financeiro extends Plan_base {
         this.str_resposta = ""
     }
     insere(json, resposta){
-        super.insere(json)
-        resposta["test"] = {"test": 12}
+        resposta = super.insere(json, resposta)
         return resposta
     }
     pega_por_id(id, resposta){
