@@ -34,6 +34,7 @@ class Plan_base{
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
                     resposta[`resultado ${this.table_name}`] = res_json
+                    console.log(resposta)
                 }
             })
         } else {resposta[`validacao ${this.table_name}`] = this._valida(json)}
