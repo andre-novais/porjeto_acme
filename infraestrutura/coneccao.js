@@ -17,7 +17,6 @@ var tabelas = [
 
 tabelas.forEach(tabela => {
     coneccao.query(tabela, erro =>{
-        console.log(tabela)
         if(erro) {
             console.log(erro)
         } 

@@ -27,13 +27,14 @@ class Plan_base{
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":str;
             const valores = Object.values(json).map(converte)
 
-            let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores})`
+            let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores}) RETURNING id`
             console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
-                    res.send(erro)
+                    console.log(erro),
+                    res.status(500).send("erro interno")
                 } else {
-                    res.send(resultado)
+                    res.send(json)
                 }
             })
         } else {res.send(this._valida(json))}
