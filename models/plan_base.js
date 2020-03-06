@@ -14,7 +14,7 @@ class Plan_base{
                     return `O valor ${value} para o campo ${key} não foi aceito`
                 }
             } else {
-                console.log(key,value,typeof(value),typeof(this.items[key]))
+                console.log(key,value,typeof(value),this.items[key],((typeof(value)==this.items[key])))
                 if(!(typeof(value)==this.items[key])){
                     `campo ${key} só aceita ${this.items[key]}`
                 }
