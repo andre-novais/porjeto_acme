@@ -42,10 +42,15 @@ class Loja_online extends Plan_base {
         super.deleta(id,res)
     }
     _valida_produtos(json,res){
-        for (var key in Object.keys(json)){
-            if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
-                res.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
+        try{
+            for (var key in Object.keys(json)){
+                if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
+                    res.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
+                }
             }
+        }
+        catch(erro){
+            res.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
         }
     }
     _soma_items(json){
