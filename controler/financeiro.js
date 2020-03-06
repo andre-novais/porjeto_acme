@@ -10,7 +10,7 @@ module.exports = app => {
         res.send(resposta)
     })
     app.post('/financeiro', (req, res) => {
-        var resposta = ""
+        global.resposta = ""
         console.log('Evento enviado')
         console.log(req.body)
         resposta = instancia_planilha.insere(req.body)
