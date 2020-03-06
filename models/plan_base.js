@@ -5,8 +5,6 @@ class Plan_base{
     _valida(json){        
         for(let [key,value]of Object.entries(json)){
             if (Object.keys(this.items).indexOf(key)<0){
-                console.log(key)
-                console.log(this.items)
                 return `são necessarios os items ${Object.keys(this.items).join()}`
             }
             if (typeof(this.items[key])=="object"){

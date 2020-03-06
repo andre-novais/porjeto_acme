@@ -34,7 +34,7 @@ class Loja_online extends Plan_base {
                                                 "DS_evento":"compra_por_venda_descoberta",
                                                 "ID_produto":produto_sem_estoque,
                                                 "VL_quantidade":json["JS_produtos"][produto_sem_estoque]["quantidade"],
-                                                "VL_transacao":(parceInt(json["JS_produtos"][produto_sem_estoque])*preco_19)
+                                                "VL_transacao":(parseInt(json["JS_produtos"][produto_sem_estoque])*preco_19)
                                                 },
                                                 resposta)
             }    
