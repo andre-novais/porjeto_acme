@@ -23,10 +23,10 @@ class Plan_base{
     }
     insere(json, res){
         if (this._valida(json)===true){
-            
+            console.log(Object.values(json))
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":str;
             const valores = Object.values(json).map(converte)
-
+            console.log(valores)
             let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores}) RETURNING id`
             console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
