@@ -23,18 +23,15 @@ class Plan_base{
     }
     insere(json, resposta){
         if (this._valida(json)===true){
-            console.log(Object.values(json))
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":(typeof(str)=="object")?"'"+JSON.stringify(str)+"'":str;
             const valores = Object.values(json).map(converte)
-            console.log(valores)
             let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores.join(',')}) RETURNING id`
-            console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro),
                     resposta + "\n" + "erro de tipagem" 
                 } else {
-                    console.log(resultado)
+                    console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
                     resposta = resposta + "\n"+ res_json
@@ -57,11 +54,12 @@ class Plan_base{
             const valores = Object.values(json).map(converte)        
 
             const sql = `UPDATE ${this.table_name} SET (${Object.keys(json)}) = (${valores}) WHERE id = ${id}`
-            console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
+                    console.log(erro)
                     resposta = resposta + "\n" + erro
                 } else {
+                    console.log(sql)
                     resposta = resposta + "\n" + resultado
                 }
             })
@@ -71,8 +69,10 @@ class Plan_base{
         const sql = `DELETE FROM ${this.table_name} WHERE id = ${id}`
         this.conn.query(sql, (erro, resultado) => {
             if(erro) {
+                console.log(erro)
                 resposta = resposta + "\n" + erro
             } else {
+                console.log(sql)
                 resposta = resposta + "\n" + resultado.rows[0]
         }})        
     }

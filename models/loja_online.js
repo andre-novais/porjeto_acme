@@ -62,16 +62,14 @@ class Loja_online extends Plan_base {
             resposta = resposta + `campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`
         }
     }
-    _soma_items(json){
+    _soma_items(json_produtos){
         console.log("json que vai para soma items eh")
         console.log(json)
         let soma = 0
-        for (var key in Object.keys(json)){
-            console.log(json[key])
+        json_produtos.forEach(key => {
             soma += parseInt(json[key]["quantidade"]) * parseInt(json[key]["preco"])
-        }
+        })
         return soma
-
     }
 }
 
