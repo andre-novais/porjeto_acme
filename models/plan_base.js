@@ -36,6 +36,7 @@ class Plan_base{
                 }
             })
         } else {resposta = resposta + "\n" + this._valida(json)}
+        return resposta
     }
     pega_por_id(id,resposta){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
@@ -45,6 +46,7 @@ class Plan_base{
             } else {
                 resposta = resposta + "\n" + resultado.rows[0]
         }})
+        return resposta
     }
     altera(id,json,resposta){
         if(this._valida(json)===true){
@@ -62,6 +64,7 @@ class Plan_base{
                 }
             })
         }
+        return resposta
     }
     deleta(id, resposta){
         const sql = `DELETE FROM ${this.table_name} WHERE id = ${id}`
@@ -72,7 +75,8 @@ class Plan_base{
             } else {
                 console.log(sql)
                 resposta = resposta + "\n" + resultado.rows[0]
-        }})        
+        }})
+        return resposta     
     }
 }
 

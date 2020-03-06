@@ -6,23 +6,23 @@ var resposta = ""
 module.exports = app => {
     app.get('/financeiro/:id', (req,res) => {
         const id = parseInt(req.params.id)
-        instancia_planilha.pega_por_id(id, resposta)
+        resposta = instancia_planilha.pega_por_id(id, resposta)
         res.send(resposta)
     })
     app.post('/financeiro', (req, res) => {
         console.log('Evento enviado')
         console.log(req.body)
-        instancia_planilha.insere(req.body, resposta)
+        resposta = instancia_planilha.insere(req.body, resposta)
         res.send(resposta)
     })
     app.put('/financeiro/:id', (req,res)=>{
         const id = parseInt(req.params.id)
-        instancia_planilha.altera(id, req.body,resposta)
+        resposta = instancia_planilha.altera(id, req.body,resposta)
         res.send(resposta)
     })
     app.delete('/financeiro/:id',(req,res)=>{
         const id = parseInt(req.params.id)
-        instancia_planilha.deleta(id,resposta)
+        resposta = instancia_planilha.deleta(id,resposta)
         res.send(resposta)
     })     
 }
