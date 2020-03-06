@@ -52,7 +52,6 @@ class Loja_online extends Plan_base {
     _valida_produtos(json,resposta){
         try{
             for (var key in Object.keys(json)){
-                console.log(json[key],json[key].hasOwnProperty("quantidade"),json[key].hasOwnProperty("preco"))
                 if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
                     resposta = resposta +`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`
                 }
@@ -63,8 +62,6 @@ class Loja_online extends Plan_base {
         }
     }
     _soma_items(json_produtos){
-        console.log("json que vai para soma items eh")
-        console.log(json_produtos)
         let soma = 0
         Object.keys(json_produtos).forEach(key => {
             soma += parseInt(json_produtos[key]["quantidade"]) * parseInt(json_produtos[key]["preco"])

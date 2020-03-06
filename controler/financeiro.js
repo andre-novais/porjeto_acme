@@ -9,7 +9,7 @@ module.exports = app => {
         instancia_planilha.pega_por_id(id, resposta)
         res.send(resposta)
     })
-    app.post('/financeiro', (req, resposta) => {
+    app.post('/financeiro', (req, res) => {
         console.log('Evento enviado')
         console.log(req.body)
         instancia_planilha.insere(req.body, resposta)
