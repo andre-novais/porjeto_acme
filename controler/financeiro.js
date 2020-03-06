@@ -13,9 +13,9 @@ module.exports = app => {
         global.resposta = ""
         console.log('Evento enviado')
         console.log(req.body)
-        resposta = instancia_planilha.insere(req.body)
-        console.log(resposta)
-        res.send(resposta)
+        instancia_planilha.insere(req.body)
+        console.log(instancia_planilha.str_resposta)
+        res.send(instancia_planilha.str_resposta)
     })
     app.put('/financeiro/:id', (req,res)=>{
         const id = parseInt(req.params.id)

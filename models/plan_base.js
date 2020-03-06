@@ -20,7 +20,7 @@ class Plan_base{
         return true
     }
     insere(json, resposta){
-        console.log(resposta)
+        console.log(this.str_resposta)
         if (this._valida(json)===true){
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":(typeof(str)=="object")?"'"+JSON.stringify(str)+"'":str;
             const valores = Object.values(json).map(converte)
@@ -28,16 +28,16 @@ class Plan_base{
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro),
-                    resposta += "\n" + "erro de tipagem" 
+                    this.str_resposta += "\n" + "erro de tipagem" 
                 } else {
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
-                    resposta += "\n"+ JSON.stringify(res_json)
+                    this.str_resposta += "\n"+ JSON.stringify(res_json)
                 }
             })
         } else {resposta += "\n" + this._valida(json)}
-        console.log(resposta += "test")
+        console.log(this.str_resposta )
         console.log("test")
     }
     pega_por_id(id,resposta){
