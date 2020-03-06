@@ -21,7 +21,7 @@ class Plan_base{
         }
         return true
     }
-    insere(json, res){
+    insere(json, resposta){
         if (this._valida(json)===true){
             console.log(Object.values(json))
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":(typeof(str)=="object")?"'"+JSON.stringify(str)+"'":str;
@@ -32,26 +32,26 @@ class Plan_base{
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro),
-                    res.status(412).send("erro de tipagem")
+                    resposta + "\n" + "erro de tipagem" 
                 } else {
                     console.log(resultado)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
-                    res.send(res_json)
+                    resposta = resposta + "\n"+ res_json
                 }
             })
-        } else {res.send(this._valida(json))}
+        } else {resposta = resposta + "\n" + this._valida(json)}
     }
-    pega_por_id(id,res){
+    pega_por_id(id,resposta){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
         this.conn.query(sql, (erro, resultado) => {
             if(erro) {
-                res.send(erro)
+                resposta = resposta + "\n" + erro
             } else {
-                res.send(resultado.rows[0])
+                resposta = resposta + "\n" + resultado.rows[0]
         }})
     }
-    altera(id,json,res){
+    altera(id,json,resposta){
         if(this._valida(json)===true){
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":str;
             const valores = Object.values(json).map(converte)        
@@ -60,20 +60,20 @@ class Plan_base{
             console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
-                    res.send(erro)
+                    resposta = resposta + "\n" + erro
                 } else {
-                    res.send(resultado)
+                    resposta = resposta + "\n" + resultado
                 }
             })
         }
     }
-    deleta(id, res){
+    deleta(id, resposta){
         const sql = `DELETE FROM ${this.table_name} WHERE id = ${id}`
         this.conn.query(sql, (erro, resultado) => {
             if(erro) {
-                res.send(erro)
+                resposta = resposta + "\n" + erro
             } else {
-                res.send(resultado.rows[0])
+                resposta = resposta + "\n" + resultado.rows[0]
         }})        
     }
 }
