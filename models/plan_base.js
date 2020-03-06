@@ -39,7 +39,7 @@ class Plan_base{
             })
         } else {resposta[`validacao ${this.table_name}`] = this._valida(json)}
         console.log(this.str_resposta )
-        console.log("test")
+        console.log(resposta)
         return resposta
     }
     pega_por_id(id,resposta){
