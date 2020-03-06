@@ -19,7 +19,7 @@ module.exports = app => {
         res.setHeader("ho", "ho")
         res.writeHead(200)
         res.write("mii")
-        res.write({"ho": 3, "mimi":9})
+        res.write("mimi")
         res.end()
     })
     app.put('/financeiro/:id', (req,res)=>{
