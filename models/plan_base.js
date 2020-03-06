@@ -32,7 +32,7 @@ class Plan_base{
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro),
-                    res.status(500).send("erro interno")
+                    res.status(412).send("erro de tipagem")
                 } else {
                     console.log(resultado)
                     let res_json = json
