@@ -3,14 +3,20 @@ class Plan_base{
         this.conn = conn
     }
     _valida(json){        
-        if (Object.keys(json).length != this.items.length){
-            return `são necessarios os items ${this.items.join()}, e nada mais`
-        }
         for(let [key,value]of Object.entries(json)){
-            if (this.items.indexOf(key)<0){
+            if (Object.entries(this.items).keys.indexOf(key)<0){
                 console.log(key)
                 console.log(this.items)
-                return `são necessarios os items ${this.items.join()}`
+                return `são necessarios os items ${Object.entries(this.items).keys.join()}`
+            }
+            if (typeof(this.items[key])=="object"){
+                if(!(this.items[key].includes(value))){
+                    return `O valor ${value} para o campo ${key} não foi aceito`
+                }
+            } else {
+                if(!(typeof(value)==this.items[key])){
+                    `campo ${key} só aceita ${this.items[key]}`
+                }
             }
         }
         return true
