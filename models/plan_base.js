@@ -34,6 +34,7 @@ class Plan_base{
                     console.log(erro),
                     res.status(500).send("erro interno")
                 } else {
+                    console.log(resultado)
                     res.send(json)
                 }
             })
