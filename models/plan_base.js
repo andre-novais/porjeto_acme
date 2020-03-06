@@ -28,17 +28,16 @@ class Plan_base{
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro),
-                    resposta + "\n" + "erro de tipagem" 
+                    resposta += "\n" + "erro de tipagem" 
                 } else {
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
-                    resposta = resposta + "\n"+ res_json
+                    resposta += "\n"+ res_json
                 }
             })
-        } else {resposta = resposta + "\n" + this._valida(json)}
+        } else {resposta += "\n" + this._valida(json)}
         console.log(resposta)
-        return resposta
     }
     pega_por_id(id,resposta){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`

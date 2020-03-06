@@ -9,9 +9,8 @@ class Financeiro extends Plan_base {
         this.table_name = "T_financeiro"
     }
     insere(json, resposta){
-        resposta = super.insere(json, resposta)
+        super.insere(json)
         console.log(resposta)
-        return resposta
     }
     pega_por_id(id, resposta){
         resposta = super.pega_por_id(id, resposta)

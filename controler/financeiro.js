@@ -1,7 +1,7 @@
 const planilha = require('../models/financeiro.js')
 const conn = require('../infraestrutura/coneccao.js')
 var instancia_planilha = new planilha(conn)
-var resposta = ""
+
 
 module.exports = app => {
     app.get('/financeiro/:id', (req,res) => {
@@ -10,9 +10,10 @@ module.exports = app => {
         res.send(resposta)
     })
     app.post('/financeiro', (req, res) => {
+        var resposta = ""
         console.log('Evento enviado')
         console.log(req.body)
-        resposta = instancia_planilha.insere(req.body, resposta)
+        resposta = instancia_planilha.insere(req.body)
         console.log(resposta)
         res.send(resposta)
     })
