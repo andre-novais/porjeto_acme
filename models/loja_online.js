@@ -57,7 +57,7 @@ class Loja_online extends Plan_base {
     _soma_items(json){
         let soma = 0
         for (var key in Object.keys(json)){
-            soma += parseint(json[key]["quantidade"]) * parseInt(json[key]["preco"])
+            soma += parseInt(json[key]["quantidade"]) * parseInt(json[key]["preco"])
         }
         return soma
 
