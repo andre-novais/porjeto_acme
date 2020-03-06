@@ -66,7 +66,7 @@ class Loja_online extends Plan_base {
         console.log("json que vai para soma items eh")
         console.log(json_produtos)
         let soma = 0
-        json_produtos.forEach(key => {
+        Object.keys(json_produtos).forEach(key => {
             soma += parseInt(json_produtos[key]["quantidade"]) * parseInt(json_produtos[key]["preco"])
         })
         return soma
