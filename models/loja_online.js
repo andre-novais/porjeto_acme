@@ -10,9 +10,9 @@ class Loja_online extends Plan_base {
         this.items ={"ID_compra": "number", "ID_cliente": "number","JS_produtos": "object","BO_checkout": "boolean", "JS_dados_financeiros": "object", "DS_evento":["inclusão-exclusão","inicio_checkout","compra_efetuada"]}
         this.table_name = "T_loja_online"
     }
-    insere(json, res){
-        this._valida_produtos(json["JS_produtos"],res)
-        super.insere(json, res)
+    insere(json, resposta){
+        this._valida_produtos(json["JS_produtos"],resposta)
+        super.insere(json, resposta)
         if(json["DS_evento"]=="compra_efetuada"){
             var instancia_crm = new Crm(conn)
             var instancia_financeiro = new Financeiro(conn)
@@ -29,29 +29,29 @@ class Loja_online extends Plan_base {
                                             "ID_produto":produto_sem_estoque,
                                             "VL_quantidade":json[produto_sem_estoque]["quantidade"],
                                             "VL_transacao":(parceInt(json[produto_sem_estoque])*preco_19)},
-                                            res)
+                                            resposta)
         }
     }
-    pega_por_id(id, res){
-        super.pega_por_id(id, res)
+    pega_por_id(id, resposta){
+        super.pega_por_id(id, resposta)
     }
-    altera(id,json,res){
-        super.altera(id,json,res)
+    altera(id,json,resposta){
+        super.altera(id,json,resposta)
     }
-    deleta(id,res){
-        super.deleta(id,res)
+    deleta(id,resposta){
+        super.deleta(id,resposta)
     }
-    _valida_produtos(json,res){
+    _valida_produtos(json,resposta){
         try{
             for (var key in Object.keys(json)){
                 console.log(json[key],json[key].hasOwnProperty("quantidade"),json[key].hasOwnProperty("preco"))
                 if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
-                    res.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
+                    resposta.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
                 }
             }
         }
         catch(erro){
-            res.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
+            resposta.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
         }
     }
     _soma_items(json){

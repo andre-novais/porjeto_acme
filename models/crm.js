@@ -6,17 +6,17 @@ class Crm extends Plan_base {
         this.items ={"ID_cliente": "number", "DS_evento": ["cliente_novo", "cliente_inativado", "cliente_ativado"]}
         this.table_name = "T_crm"
     }
-    insere(json, res){
-        super.insere(json, res)
+    insere(json, resposta){
+        super.insere(json, resposta)
     }
-    pega_por_id(id, res){
-        super.pega_por_id(id, res)
+    pega_por_id(id, resposta){
+        super.pega_por_id(id, resposta)
     }
-    altera(id,json,res){
-        super.altera(id,json,res)
+    altera(id,json,resposta){
+        super.altera(id,json,resposta)
     }
-    deleta(id,res){
-        super.deleta(id,res)
+    deleta(id,resposta){
+        super.deleta(id,resposta)
     }
 }
 
