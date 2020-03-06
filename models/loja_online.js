@@ -16,8 +16,8 @@ class Loja_online extends Plan_base {
         if(json["DS_evento"]=="compra_efetuada"){
             var instancia_crm = new Crm(conn)
             var instancia_financeiro = new Financeiro(conn)
-            instancia_crm.insere({"ID_cliente":json["ID_cliente"],"DS_evento":"cliente_ativado"},res)
-            instancia_financeiro.insere({"VL_tipificacao":"custo","VL_valor":this._soma_items(json)}, res)
+            instancia_crm.insere({"ID_cliente":json["ID_cliente"],"DS_evento":"cliente_ativado"},resposta)
+            instancia_financeiro.insere({"VL_tipificacao":"custo","VL_valor":this._soma_items(json)}, resposta)
         }
         const produto_sem_estoque = "19"
         if(Object.keys(json).includes(produto_sem_estoque)){
@@ -60,7 +60,7 @@ class Loja_online extends Plan_base {
             soma += parseint(json[key]["quantidade"]) * parseInt(json[key]["preco"])
         }
         return soma
-        
+
     }
 }
 
