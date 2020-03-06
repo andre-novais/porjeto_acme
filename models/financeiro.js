@@ -10,6 +10,7 @@ class Financeiro extends Plan_base {
     }
     insere(json, resposta){
         resposta = super.insere(json, resposta)
+        console.log(resposta)
         return resposta
     }
     pega_por_id(id, resposta){
