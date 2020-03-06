@@ -38,6 +38,7 @@ class Plan_base{
             })
         } else {resposta += "\n" + this._valida(json)}
         console.log(resposta)
+        console.log("test")
     }
     pega_por_id(id,resposta){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
