@@ -37,7 +37,7 @@ class Plan_base{
                 }
             })
         } else {resposta += "\n" + this._valida(json)}
-        console.log(resposta)
+        console.log(resposta += "test")
         console.log("test")
     }
     pega_por_id(id,resposta){
