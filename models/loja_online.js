@@ -26,7 +26,7 @@ class Loja_online extends Plan_base {
             instancia_financeiro.insere({"VL_tipificacao":"custo","VL_valor":this._soma_items(json["JS_produtos"])}, resposta)
         
             const produto_sem_estoque = "19"
-            if(Object.keys(json).includes(produto_sem_estoque)){
+            if(Object.keys(json["JS_produtos"]).includes(produto_sem_estoque)){
                 var instancia_fornecedores = new Fornecedores(conn)
                 const fornecedor_de_19 = 1111
                 const preco_19 = 10.99
