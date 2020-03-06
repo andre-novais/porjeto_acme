@@ -18,6 +18,8 @@ module.exports = app => {
         res.setHeader("hey", {"ho": 3})
         res.setHeader("ho", "ho")
         res.writeHead(200)
+        res.write("mii")
+        res.write({"ho": 3, "mimi":9})
         res.end()
     })
     app.put('/financeiro/:id', (req,res)=>{
