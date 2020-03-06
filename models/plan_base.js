@@ -33,7 +33,7 @@ class Plan_base{
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
-                    resposta += "\n"+ res_json
+                    resposta += "\n"+ JSON.stringify(res_json)
                 }
             })
         } else {resposta += "\n" + this._valida(json)}
