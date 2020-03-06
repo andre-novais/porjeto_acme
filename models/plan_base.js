@@ -34,6 +34,7 @@ class Plan_base{
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
                     this.str_resposta += "\n"+ JSON.stringify(res_json)
+                    this.str_resposta += "heydude"
                 }
             })
         } else {resposta += "\n" + this._valida(json)}
