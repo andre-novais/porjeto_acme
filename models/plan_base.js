@@ -35,7 +35,9 @@ class Plan_base{
                     res.status(500).send("erro interno")
                 } else {
                     console.log(resultado)
-                    res.send(json)
+                    let res_json = json
+                    res_json["id"] = resultado["rows"][0]["id"]
+                    res.send(res_json)
                 }
             })
         } else {res.send(this._valida(json))}
