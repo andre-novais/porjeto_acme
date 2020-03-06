@@ -7,7 +7,13 @@ const Financeiro = require("./financeiro.js")
 class Loja_online extends Plan_base {
     constructor(conn){
         super(conn);
-        this.items ={"ID_compra": "number", "ID_cliente": "number","JS_produtos": "object","BO_checkout": "boolean", "JS_dados_financeiros": "object", "DS_evento":["inclusão-exclusão","inicio_checkout","compra_efetuada"]}
+        this.items ={"ID_compra": "number",
+                    "ID_cliente": "number",
+                    "JS_produtos": "object",
+                    "BO_checkout": "boolean",
+                    "JS_dados_financeiros": "object",
+                    "DS_evento":["inclusão-exclusão","inicio_checkout","compra_efetuada"]
+                }
         this.table_name = "T_loja_online"
     }
     insere(json, resposta){
@@ -28,7 +34,8 @@ class Loja_online extends Plan_base {
                                                 "DS_evento":"compra_por_venda_descoberta",
                                                 "ID_produto":produto_sem_estoque,
                                                 "VL_quantidade":json["JS_produtos"][produto_sem_estoque]["quantidade"],
-                                                "VL_transacao":(parceInt(json["JS_produtos"][produto_sem_estoque])*preco_19)},
+                                                "VL_transacao":(parceInt(json["JS_produtos"][produto_sem_estoque])*preco_19)
+                                                },
                                                 resposta)
             }    
         }
@@ -56,8 +63,11 @@ class Loja_online extends Plan_base {
         }
     }
     _soma_items(json){
+        console.log("json que vai para soma items eh")
+        console.log(json)
         let soma = 0
         for (var key in Object.keys(json)){
+            console.log(json[key])
             soma += parseInt(json[key]["quantidade"]) * parseInt(json[key]["preco"])
         }
         return soma
