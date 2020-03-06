@@ -6,18 +6,18 @@ class Rh extends Plan_base {
         this.items ={"CD_funcionario": "number", "DS_evento": ["contratacao", "desligamento", "promocao"], "DS_cargo":"string"}
         this.table_name = "T_rh"
     }
-    insere(json, res){
-        super.insere(json, res)
+    insere(json, resposta){
+        super.insere(json, resposta)
     }
-    pega_por_id(id, res){
-        super.pega_por_id(id, res)
+    pega_por_id(id, resposta){
+        super.pega_por_id(id,resposta)
     }
-    altera(id,json,res){
-        super.altera(id,json,res)
+    altera(id,json,resposta){
+        super.altera(id,json,resposta)
     }
-    deleta(id,res){
-        super.deleta(id,res)
+    deleta(id,resposta){
+        super.deleta(id,resposta)
     }
 }
 
-module.exports = Rh
+module.exports = Rh 
