@@ -36,9 +36,6 @@ class Plan_base{
                 }
             })
         } else {res.setHeader(`validacao ${this.table_name}`,this._valida(json))}
-        console.log(this.str_res )
-        console.log(res)
-        
     }
     pega_por_id(id,res){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`

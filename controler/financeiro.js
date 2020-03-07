@@ -10,12 +10,7 @@ module.exports = app => {
         res.end()
     })
     app.post('/financeiro', (req, res) => {
-        //instancia_planilha.insere(req.body, res)
-        res.setHeader("hey", 2)
-        res.setHeader("hiy", 2)
-        res.setHeader("hoy", 2)
-        res.setHeader("huy", 2)
-
+        instancia_planilha.insere(req.body, res)
         res.end()
     })
     app.put('/financeiro/:id', (req,res)=>{
