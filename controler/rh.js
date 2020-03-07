@@ -30,5 +30,8 @@ module.exports = app => {
         if (!(res.headerSent)){
             res.status(200).send(req.body)
         }
-    })     
+    })
+    app.get('/rh', (req,res)=>{
+        instancia_planilha.select_estrela(res);
+    })          
 }

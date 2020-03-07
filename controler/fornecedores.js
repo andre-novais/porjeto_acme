@@ -29,5 +29,8 @@ module.exports = app => {
         if (!(res.headerSent)){
             res.status(200).send(req.body)
         }
-    })     
+    })
+    app.get('/fornecedores', (req,res)=>{
+        instancia_planilha.select_estrela(res);
+    })          
 }
