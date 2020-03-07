@@ -28,11 +28,13 @@ class Plan_base{
                 if(erro) {
                     console.log(erro)
                     res.resposta[`erro em ${this.table_name}`] = JSON.stringify(erro)
+                    console.log(res.resposta)
                 } else {
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
                     res.resposta[`resultado ${this.table_name}`] = JSON.stringify(res_json)
+                    console.log(res.resposta)
                 }
             })
         } else { res.resposta[`erro em ${this.table_name}`] = this._valida(json)}
