@@ -10,8 +10,8 @@ module.exports = app => {
     })
     app.post('/financeiro', (req, res) => {
         var instancia_resposta =  require('./resposta.js')
-        instancia_resposta =  instancia_planilha.insere(req.body,instancia_resposta);
-        console.log(instancia_resposta.resposta)
+        let resultado =  instancia_planilha.insere(req.body);
+        console.log(resultado)
         res.writeHead(200, instancia_resposta.resposta)
         res.writeContinue()
         res.end()
