@@ -10,7 +10,7 @@ module.exports = app => {
         res.end()
     })
     app.post('/financeiro', (req, res) => {
-        instancia_resposta = new Resposta()
+        var instancia_resposta = new Resposta()
         instancia_planilha.insere(req.body,instancia_resposta);
         res.writeHead(200, instancia_resposta.resposta)
         res.writeContinue()
