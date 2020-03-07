@@ -17,7 +17,6 @@ class Plan_base{
                 }
             }
         }
-
         return true
     }
     insere(json, res){
