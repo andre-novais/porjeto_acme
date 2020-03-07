@@ -7,12 +7,9 @@ class Financeiro extends Plan_base {
                      "VL_valor": "number"
                     }
         this.table_name = "T_financeiro"
-        this.resultado = ""
     }
     insere(json){
-        super.insere(json)
-        console.log(this.resultado)
-        return this.resultado
+        super.insere(json, res)
     }
     pega_por_id(id, res){
         super.pega_por_id(id, res)

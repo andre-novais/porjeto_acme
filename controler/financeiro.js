@@ -6,24 +6,28 @@ module.exports = app => {
     app.get('/financeiro/:id', (req,res) => {
         const id = parseInt(req.params.id)
         instancia_planilha.pega_por_id(id, res)
-        res.end()
+        if (!(res.headerSent)){
+            res.status(200).send(req.body)
+        }
     })
     app.post('/financeiro', (req, res) => {
-        var instancia_resposta =  require('./resposta.js')
-        let resultado =  instancia_planilha.insere(req.body);
-        console.log(resultado)
-        res.writeHead(200, instancia_resposta.resposta)
-        res.writeContinue()
-        res.end()
+        instancia_planilha.insere(req.body);
+        if (!(res.headerSent)){
+            res.status(200).send(req.body)
+        }
     })
     app.put('/financeiro/:id', (req,res)=>{
         const id = parseInt(req.params.id)
         instancia_planilha.altera(id, req.body,res)
-        res.end()
+        if (!(res.headerSent)){
+            res.status(200).send(req.body)
+        }
     })
     app.delete('/financeiro/:id',(req,res)=>{
         const id = parseInt(req.params.id)
         instancia_planilha.deleta(id,res)
-        res.end()
+        if (!(res.headerSent)){
+            res.status(200).send(req.body)
+        }
     })     
 }

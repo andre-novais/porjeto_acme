@@ -28,24 +28,21 @@ class Plan_base{
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro)
-                    this.resultado = erro
+                    res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
                 } else {
                     console.log(sql)
                     this.resultado = resultado
                 }
             })
-        } else { res.resposta[`erro_${this.table_name}`] = this._valida(json)}
-        console.log(JSON.stringify(this.resultado))
-        console.log("returning res")
-        return JSON.stringify(this.resultado)
+        } else { res.send(`erro_${this.table_name}_${this._valida(json)}`)}
     }
     pega_por_id(id,res){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
         this.conn.query(sql, (erro, resultado) => {
             if(erro) {
-                res + "\n" + erro
+                res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
             } else {
-                res + "\n" + resultado.rows[0]
+                res.send(resultado)
         }})
         
     }
@@ -58,10 +55,9 @@ class Plan_base{
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro)
-                    res + "\n" + erro
+                    res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
                 } else {
                     console.log(sql)
-                    res + "\n" + resultado
                 }
             })
         }
@@ -72,10 +68,9 @@ class Plan_base{
         this.conn.query(sql, (erro, resultado) => {
             if(erro) {
                 console.log(erro)
-                res + "\n" + erro
+                res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
             } else {
                 console.log(sql)
-                res + "\n" + resultado.rows[0]
         }})
              
     }
