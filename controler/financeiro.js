@@ -11,7 +11,7 @@ module.exports = app => {
         }
     })
     app.post('/financeiro', (req, res) => {
-        instancia_planilha.insere(req.body);
+        instancia_planilha.insere(req.body, res);
         if (!(res.headerSent)){
             res.status(200).send(req.body)
         }
