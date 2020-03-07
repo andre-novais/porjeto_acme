@@ -7,23 +7,18 @@ class Financeiro extends Plan_base {
                      "VL_valor": "number"
                     }
         this.table_name = "T_financeiro"
-        this.str_resposta = ""
     }
-    insere(json, resposta){
-        resposta = super.insere(json, resposta)
-        return resposta
+    insere(json, res){
+        super.insere(json, res)
     }
-    pega_por_id(id, resposta){
-        resposta = super.pega_por_id(id, resposta)
-        return resposta
+    pega_por_id(id, res){
+        super.pega_por_id(id, res)
     }
-    altera(id,json,resposta){
-        resposta = super.altera(id,json,resposta)
-        return resposta
+    altera(id,json,res){
+        super.altera(id,json,res)
     }
-    deleta(id,resposta){
-        resposta = super.deleta(id,resposta)
-        return resposta
+    deleta(id,res){
+        super.deleta(id,res)
     }
 }
 

@@ -16,14 +16,14 @@ class Loja_online extends Plan_base {
                 }
         this.table_name = "T_loja_online"
     }
-    insere(json, resposta){
-        this._valida_produtos(json["JS_produtos"],resposta)
-        super.insere(json, resposta)
+    insere(json, res){
+        this._valida_produtos(json["JS_produtos"],res)
+        super.insere(json, res)
         if(json["DS_evento"]=="compra_efetuada"){
             var instancia_crm = new Crm(conn)
             var instancia_financeiro = new Financeiro(conn)
-            instancia_crm.insere({"ID_cliente":json["ID_cliente"],"DS_evento":"cliente_ativado"},resposta)
-            instancia_financeiro.insere({"VL_tipificacao":"custo","VL_valor":this._soma_items(json["JS_produtos"])}, resposta)
+            instancia_crm.insere({"ID_cliente":json["ID_cliente"],"DS_evento":"cliente_ativado"},res)
+            instancia_financeiro.insere({"VL_tipificacao":"custo","VL_valor":this._soma_items(json["JS_produtos"])}, res)
         
             const produto_sem_estoque = "19"
             if(Object.keys(json["JS_produtos"]).includes(produto_sem_estoque)){
@@ -36,29 +36,29 @@ class Loja_online extends Plan_base {
                                                 "VL_quantidade":json["JS_produtos"][produto_sem_estoque]["quantidade"],
                                                 "VL_transacao":(parseInt(json["JS_produtos"][produto_sem_estoque])*preco_19)
                                                 },
-                                                resposta)
+                                                res)
             }    
         }
     }
-    pega_por_id(id, resposta){
-        super.pega_por_id(id, resposta)
+    pega_por_id(id, res){
+        super.pega_por_id(id, res)
     }
-    altera(id,json,resposta){
-        super.altera(id,json,resposta)
+    altera(id,json,res){
+        super.altera(id,json,res)
     }
-    deleta(id,resposta){
-        super.deleta(id,resposta)
+    deleta(id,res){
+        super.deleta(id,res)
     }
-    _valida_produtos(json,resposta){
+    _valida_produtos(json,res){
         try{
             for (var key in Object.keys(json)){
                 if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
-                    resposta = resposta +`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`
+                    res.setHeader("erro_na_tipagem",`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
                 }
             }
         }
         catch(erro){
-            resposta = resposta + `campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`
+            res.setHeader("erro_na_tipagem",`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
         }
     }
     _soma_items(json_produtos){

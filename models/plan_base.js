@@ -19,68 +19,67 @@ class Plan_base{
         }
         return true
     }
-    insere(json, resposta){
-        console.log(this.str_resposta)
+    insere(json, res){
+        console.log(this.str_res)
         if (this._valida(json)===true){
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":(typeof(str)=="object")?"'"+JSON.stringify(str)+"'":str;
-            const valores = Object.values(json).map(converte)
+            const valoObject.values(json).map(converte)
             let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores.join(',')}) RETURNING id`
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro),
-                    this.str_resposta += "\n" + "erro de tipagem" 
+                    this.str_res += "\n" + "erro de tipagem" 
                 } else {
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
-                    resposta[`resultado ${this.table_name}`] = res_json
-                    console.log(resposta)
+                    res.setHeader("resultado_insert", JSON.stringify(res_json))
                 }
             })
-        } else {resposta[`validacao ${this.table_name}`] = this._valida(json)}
-        console.log(this.str_resposta )
-        console.log(resposta)
-        return resposta
+        } else {res.setHeader(`validacao ${this.table_name}`,this._valida(json))}
+        console.log(this.str_res )
+        console.log(res)
+        
     }
-    pega_por_id(id,resposta){
+    pega_por_id(id,res){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
         this.conn.query(sql, (erro, resultado) => {
             if(erro) {
-                resposta = resposta + "\n" + erro
+                res + "\n" + erro
             } else {
-                resposta = resposta + "\n" + resultado.rows[0]
+                res + "\n" + resultado.rows[0]
         }})
-        return resposta
+        
     }
-    altera(id,json,resposta){
+    altera(id,json,res){
         if(this._valida(json)===true){
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":str;
-            const valores = Object.values(json).map(converte)        
+            const valoObject.values(json).map(converte)        
 
             const sql = `UPDATE ${this.table_name} SET (${Object.keys(json)}) = (${valores}) WHERE id = ${id}`
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro)
-                    resposta = resposta + "\n" + erro
+                    res + "\n" + erro
                 } else {
                     console.log(sql)
-                    resposta = resposta + "\n" + resultado
+                    res + "\n" + resultado
                 }
             })
         }
-        return resposta
+        
     }
-    deleta(id, resposta){
+    deleta(id, res){
         const sql = `DELETE FROM ${this.table_name} WHERE id = ${id}`
         this.conn.query(sql, (erro, resultado) => {
             if(erro) {
                 console.log(erro)
-                resposta = resposta + "\n" + erro
+                res + "\n" + erro
             } else {
                 console.log(sql)
-                resposta = resposta + "\n" + resultado.rows[0]
+                res + "\n" + resultado.rows[0]
         }})
-        return resposta     
+             
     }
 }
 
