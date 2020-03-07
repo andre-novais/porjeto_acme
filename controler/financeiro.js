@@ -27,7 +27,7 @@ module.exports = app => {
             res.status(200).send(req.body)
         }
     })
-    app.get('financeiro', (req,res)=>{
+    app.get('/financeiro', (req,res)=>{
         instancia_planilha.select_estrela(res);
     })     
 }
