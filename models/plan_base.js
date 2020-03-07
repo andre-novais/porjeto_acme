@@ -26,16 +26,16 @@ class Plan_base{
             let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores.join(',')}) RETURNING id`
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
-                    console.log(erro),
-                    this.str_res += "\n" + "erro de tipagem" 
+                    console.log(erro)
+                    res.resposta[`erro em ${this.table_name}`] = JSON.stringify(erro)
                 } else {
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
-                    res.setHeader("resultado_insert", JSON.stringify(res_json))
+                    res.resposta[`resultado ${this.table_name}`] = JSON.stringify(res_json)
                 }
             })
-        } else {res.setHeader(`validacao ${this.table_name}`,this._valida(json))}
+        } else { res.resposta[`erro em ${this.table_name}`] = this._valida(json)}
     }
     pega_por_id(id,res){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
