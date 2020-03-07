@@ -1,8 +1,6 @@
 const planilha = require('../models/financeiro.js')
 const conn = require('../infraestrutura/coneccao.js')
 var instancia_planilha = new planilha(conn)
-const Resposta = require('./resposta.js')
-var instancia_resposta = new Resposta()
 
 module.exports = app => {
     app.get('/financeiro/:id', (req,res) => {
@@ -11,6 +9,7 @@ module.exports = app => {
         res.end()
     })
     app.post('/financeiro', (req, res) => {
+        var instancia_resposta =  require('./resposta.js')
         instancia_planilha.insere(req.body,instancia_resposta);
         res.writeHead(200, instancia_resposta.resposta)
         res.writeContinue()

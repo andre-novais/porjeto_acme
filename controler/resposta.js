@@ -7,4 +7,4 @@ class Resposta extends Object {
     }
 }
 
-module.exports = Resposta
+module.exports = new Resposta()
