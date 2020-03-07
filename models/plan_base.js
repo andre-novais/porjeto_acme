@@ -42,7 +42,7 @@ class Plan_base{
             if(erro) {
                 res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
             } else {
-                res.send(resultado)
+                res.send(resultado["rows"][0])
         }})
         
     }
@@ -73,6 +73,18 @@ class Plan_base{
                 console.log(sql)
         }})
              
+    }
+    select_estrela(res){
+        const sql = `SELECT * FROM ${this.table_name}`
+        this.conn.query(sql, (erro, resultado) => {
+            if(erro) {
+                console.log(erro)
+                res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
+            } else {
+                console.log(sql)
+                res.send(resultado["rows"])
+        }})
+
     }
 }
 
