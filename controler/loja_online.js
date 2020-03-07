@@ -1,7 +1,7 @@
 const planilha = require('../models/loja_online.js')
 const conn = require('../infraestrutura/coneccao.js')
 var instancia_planilha = new planilha(conn)
-var ""
+
 
 module.exports = app => {
     app.get('/loja_online/:id', (req,res) => {

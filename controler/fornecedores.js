@@ -1,7 +1,6 @@
 const planilha = require('../models/fornecedores.js')
 const conn = require('../infraestrutura/coneccao.js')
 var instancia_planilha = new planilha(conn)
-var ""
 
 module.exports = app => {
     app.get('/fornecedores/:id', (req,res) => {

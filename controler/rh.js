@@ -1,7 +1,7 @@
 const planilha = require('../models/rh.js')
 const conn = require('../infraestrutura/coneccao.js')
 var instancia_planilha = new planilha(conn)
-var ""
+
 
 module.exports = app => {
     app.get('/rh/:id', (req,res) => {
