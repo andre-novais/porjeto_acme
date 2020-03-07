@@ -6,9 +6,6 @@ module.exports = app => {
     app.get('/financeiro/:id', (req,res) => {
         const id = parseInt(req.params.id)
         instancia_planilha.pega_por_id(id, res)
-        if (!(res.headerSent)){
-            res.status(200).send(req.body)
-        }
     })
     app.post('/financeiro', (req, res) => {
         instancia_planilha.insere(req.body, res);
