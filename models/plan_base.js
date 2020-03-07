@@ -23,23 +23,28 @@ class Plan_base{
         if (this._valida(json)===true){
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":(typeof(str)=="object")?"'"+JSON.stringify(str)+"'":str;
             const valores = Object.values(json).map(converte)
-            let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores.join(',')}) RETURNING id`            
+            let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores.join(',')}) RETURNING id`
+            
+            function comunica_db (sql, callback){
             let resultado_sql = this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro)
                     //res.resposta[`erro em ${this.table_name}`] = JSON.stringify(erro)
                     console.log(res.resposta)
-                    return JSON.stringify(erro)
+                    return callback(JSON.stringify(erro))
                 } else {
                     console.log(sql)
                     let res_json = json
                     res_json["id"] = resultado["rows"][0]["id"]
                     //res.resposta[`resultado ${this.table_name}`] = JSON.stringify(res_json)
-                    return JSON.stringify(res_json)
+                    return callback(JSON.stringify(res_json))
                 }
+            })}
+            
+            comunica_db(sql, (resultado)=>{
+                res.resposta[`resultado_${this.table_name}`] = resultado;
             })
-            res.resposta[`resultado ${this.table_name}`] = resultado_sql
-        } else { res.resposta[`erro em ${this.table_name}`] = this._valida(json)}
+        } else { res.resposta[`erro_${this.table_name}`] = this._valida(json)}
         console.log(res.resposta)
         console.log("returning res")
         return res
