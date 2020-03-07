@@ -20,7 +20,6 @@ class Plan_base{
         return true
     }
     insere(json, res){
-        console.log(this.str_res)
         if (this._valida(json)===true){
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":(typeof(str)=="object")?"'"+JSON.stringify(str)+"'":str;
             const valores = Object.values(json).map(converte)
