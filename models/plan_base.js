@@ -38,6 +38,9 @@ class Plan_base{
                 }
             })
         } else { res.resposta[`erro em ${this.table_name}`] = this._valida(json)}
+        console.log(res.resposta)
+        console.log("returning res")
+        return res
     }
     pega_por_id(id,res){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`
