@@ -1,6 +1,6 @@
 
 
-class Resposta {
+class Resposta extends Object {
     constructor(){
         this.resposta = {}
     }
