@@ -25,8 +25,8 @@ class Plan_base{
             const valores = Object.values(json).map(converte)
             let sql = `insert into ${this.table_name} (${Object.keys(json)}) Values (${valores.join(',')}) RETURNING id`
             
-            function comunica_db (sql, callback){
-            let resultado_sql = this.conn.query(sql, (erro, resultado) => {
+            function comunica_db (sql, callback, obj){
+            let resultado_sql =obj.conn.query(sql, (erro, resultado) => {
                 if(erro) {
                     console.log(erro)
                     //res.resposta[`erro em ${this.table_name}`] = JSON.stringify(erro)
@@ -40,10 +40,10 @@ class Plan_base{
                     return callback(JSON.stringify(res_json))
                 }
             })}
-            
+
             comunica_db(sql, (resultado)=>{
                 res.resposta[`resultado_${this.table_name}`] = resultado;
-            })
+            }, this)
         } else { res.resposta[`erro_${this.table_name}`] = this._valida(json)}
         console.log(res.resposta)
         console.log("returning res")
