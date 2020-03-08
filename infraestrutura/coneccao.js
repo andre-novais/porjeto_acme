@@ -15,6 +15,7 @@ var tabelas = [
     'CREATE TABLE IF NOT EXISTS T_rh (id SERIAL PRIMARY KEY, CD_funcionario Varchar(30) not NULL, DS_evento varchar(30) NOT NULL, DS_cargo varchar(30) NOT NULL,occured_at bigint)'
 ]
 
+
 tabelas.forEach(tabela => {
     coneccao.query(tabela, erro =>{
         if(erro) {
