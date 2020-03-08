@@ -27,6 +27,7 @@ class Plan_base{
             
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
+                    
                     console.log(erro)
                     res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
                 } else {
