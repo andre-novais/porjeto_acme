@@ -11,6 +11,9 @@ module.exports = app => {
         console.log(res.headersSent)
         res.send("ho")
         console.log(res.headersSent)
+        if (res.headersSent){
+            console.log("ja foi")
+        }
         //instancia_planilha.insere(req.body, res);
         //if (!(res.headersSent)){
         //    res.status(200).send(req.body)
