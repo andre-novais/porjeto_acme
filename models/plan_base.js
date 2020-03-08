@@ -36,6 +36,9 @@ class Plan_base{
                 }
             })
         } else { res.send(`erro_${this.table_name}_${this._valida(json)}`)}
+        if (!(res.headersSent)){
+           res.status(200).send(req.body)
+        }        
     }
     pega_por_id(id,res){
         const sql = `SELECT * FROM ${this.table_name} WHERE id = ${id}`

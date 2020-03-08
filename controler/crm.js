@@ -11,12 +11,7 @@ module.exports = app => {
         }
     })
     app.post('/crm', (req, res) => {
-        console.log('Evento enviado')
-        console.log(req.body)
         instancia_planilha.insere(req.body, res)
-        if (!(res.headerSent)){
-            res.status(200).send(req.body)
-        }
     })
     app.put('/crm/:id', (req,res)=>{
         const id = parseInt(req.params.id)

@@ -12,9 +12,6 @@ module.exports = app => {
     })
     app.post('/fornecedores', (req, res) => {
         instancia_planilha.insere(req.body, res)
-        if (!(res.headerSent)){
-            res.status(200).send(req.body)
-        }
     })
     app.put('/fornecedores/:id', (req,res)=>{
         const id = parseInt(req.params.id)

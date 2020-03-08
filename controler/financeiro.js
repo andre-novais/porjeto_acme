@@ -8,16 +8,7 @@ module.exports = app => {
         instancia_planilha.pega_por_id(id, res)
     })
     app.post('/financeiro', (req, res) => {
-        console.log(res.headersSent)
-        res.send("ho")
-        console.log(res.headersSent)
-        if (res.headersSent){
-            console.log("ja foi")
-        }
-        //instancia_planilha.insere(req.body, res);
-        //if (!(res.headersSent)){
-        //    res.status(200).send(req.body)
-        //}
+        instancia_planilha.insere(req.body, res);
     })
     app.put('/financeiro/:id', (req,res)=>{
         const id = parseInt(req.params.id)
