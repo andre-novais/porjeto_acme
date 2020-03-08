@@ -37,7 +37,7 @@ class Plan_base{
             })
         } else { res.send(`erro_${this.table_name}_${this._valida(json)}`)}
         if (!(res.headersSent)){
-            let resposta = req.body
+            let resposta = json
             resposta['id'] = id_insert
            res.status(200).send(resposta)
         }        
