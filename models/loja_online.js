@@ -17,7 +17,9 @@ class Loja_online extends Plan_base {
         this.table_name = "T_loja_online"
     }
     insere(json, res){
-        this._valida_produtos(json["JS_produtos"],res)
+        if (!(this._valida_produtos(json["JS_produtos"],res))){
+            return
+        };
         super.insere(json, res)
         if(json["DS_evento"]=="compra_efetuada"){
             var instancia_crm = new Crm(conn)
@@ -52,13 +54,16 @@ class Loja_online extends Plan_base {
     _valida_produtos(json,res){
         try{
             for (var key in Object.keys(json)){
-                if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
+                if(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco")){
                     res.setHeader("erro_na_tipagem",`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
+                    return false
                 }
             }
+            return true
         }
         catch(erro){
             res.setHeader("erro_na_tipagem",`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
+            return false
         }
     }
     _soma_items(json_produtos){
