@@ -25,16 +25,17 @@ class Loja_online extends Plan_base {
             var instancia_crm = new Crm(conn)
             var instancia_financeiro = new Financeiro(conn)
             instancia_crm.insere({"ID_cliente":json["ID_cliente"],"DS_evento":"cliente_ativado"},res)
-            instancia_financeiro.insere({"DS_tipificacao":"custo","VL_valor":this._soma_items(json["JS_produtos"])}, res)
-            const produto_sem_estoque = 19
+            instancia_financeiro.insere({"DS_tipificacao":"receita","VL_valor":this._soma_items(json["JS_produtos"])}, res)
+            const produto_sem_estoque = "19"
             const fornecedor_de_19 =71648521000
             if(Object.keys(json["JS_produtos"]).includes(produto_sem_estoque)){
-                var instancia_fornecedores = new Fornecedores(conn) 
+                var instancia_fornecedores = new Fornecedores(conn)
+                let produto = json["JS_produtos"][produto_sem_estoque]
                 instancia_fornecedores.insere({"CD_fornecedor":fornecedor_de_19,
                                                 "DS_evento":"compra_por_venda_descoberta",
-                                                "ID_produto":produto_sem_estoque,
-                                                "VL_quantidade":json["JS_produtos"][produto_sem_estoque]["quantidade"],
-                                                "VL_transacao":(parseInt(json["JS_produtos"][produto_sem_estoque]["quantidade"])*parseInt(json["JS_produtos"][produto_sem_estoque]["preco"]))
+                                                "ID_produto":parseInt(produto_sem_estoque),
+                                                "VL_quantidade":produto["quantidade"],
+                                                "VL_transacao":produto["quantidade"]*produto["preco"]
                                                 },
                                                 res)
             }    
