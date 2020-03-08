@@ -9,6 +9,9 @@ module.exports = app => {
     })
     app.post('/financeiro', (req, res) => {
         instancia_planilha.insere(req.body, res);
+        if (!(res.headersSent)){
+            res.status(200).send(req.body)
+        }        
     })
     app.put('/financeiro/:id', (req,res)=>{
         const id = parseInt(req.params.id)

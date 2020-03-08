@@ -12,6 +12,9 @@ module.exports = app => {
     })
     app.post('/crm', (req, res) => {
         instancia_planilha.insere(req.body, res)
+        if (!(res.headersSent)){
+            res.status(200).send(req.body)
+        }   
     })
     app.put('/crm/:id', (req,res)=>{
         const id = parseInt(req.params.id)

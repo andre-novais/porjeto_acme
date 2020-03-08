@@ -13,6 +13,9 @@ module.exports = app => {
     })
     app.post('/loja_online', (req, res) => {
         instancia_planilha.insere(req.body, res)
+        if (!(res.headersSent)){
+            res.status(200).send(req.body)
+        }   
     })
     app.put('/loja_online/:id', (req,res)=>{
         const id = parseInt(req.params.id)
