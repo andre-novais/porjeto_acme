@@ -29,14 +29,12 @@ class Loja_online extends Plan_base {
         
             const produto_sem_estoque = "19"
             if(Object.keys(json["JS_produtos"]).includes(produto_sem_estoque)){
-                var instancia_fornecedores = new Fornecedores(conn)
-                const fornecedor_de_19 = 1111
-                const preco_19 = 10.99
+                var instancia_fornecedores = new Fornecedores(conn) 
                 instancia_fornecedores.insere({"CD_fornecedor":fornecedor_de_19,
                                                 "DS_evento":"compra_por_venda_descoberta",
                                                 "ID_produto":produto_sem_estoque,
                                                 "VL_quantidade":json["JS_produtos"][produto_sem_estoque]["quantidade"],
-                                                "VL_transacao":(parseInt(json["JS_produtos"][produto_sem_estoque])*preco_19)
+                                                "VL_transacao":(parseInt(json["JS_produtos"][produto_sem_estoque]["quantidade"])*parseInt(json["JS_produtos"][produto_sem_estoque]["preco"]))
                                                 },
                                                 res)
             }    
@@ -56,7 +54,7 @@ class Loja_online extends Plan_base {
         try{
             Object.keys(json).forEach(key=>{
                 console.log(key)
-                if(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco")){
+                if(!(json[key].hasOwnProperty("quantidade") && json[key].hasOwnProperty("preco"))){
                     res.send(`campo JS_produtos necessita dos atributos "quantidade" e "preco" em json embedado para cada produto`)
                     return false
                 }
