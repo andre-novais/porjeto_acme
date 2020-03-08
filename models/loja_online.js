@@ -17,7 +17,7 @@ class Loja_online extends Plan_base {
         this.table_name = "T_loja_online"
     }
     insere(json, res){
-        if (this._valida_produtos(json["JS_produtos"],res)){
+        if (!(this._valida_produtos(json["JS_produtos"],res))){
             return
         };
         super.insere(json, res)

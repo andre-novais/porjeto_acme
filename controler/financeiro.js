@@ -8,9 +8,12 @@ module.exports = app => {
         instancia_planilha.pega_por_id(id, res)
     })
     app.post('/financeiro', (req, res) => {
-        instancia_planilha.insere(req.body, res);
-        if (!(res.headersSent)){
-            res.status(200).send(req.body)
+        console.log(res.headersSent)
+        res.send("ho")
+        console.log(res.headersSent)
+        //instancia_planilha.insere(req.body, res);
+        //if (!(res.headersSent)){
+        //    res.status(200).send(req.body)
         }
     })
     app.put('/financeiro/:id', (req,res)=>{
