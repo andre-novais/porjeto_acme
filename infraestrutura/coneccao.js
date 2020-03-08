@@ -8,7 +8,7 @@ const coneccao = new Client({
 })
 
 var tabelas = [
-    'CREATE TABLE IF NOT EXISTS T_financeiro (id SERIAL PRIMARY KEY, DS_tipificacao varchar(50) not NULL, VL_valor bigint not null, occured_at int)',
+    'CREATE TABLE IF NOT EXISTS T_financeiro (id SERIAL PRIMARY KEY, DS_tipificacao varchar(50) not NULL, VL_valor int not null, occured_at bigint)',
     'CREATE TABLE IF NOT EXISTS T_crm (id SERIAL PRIMARY KEY, ID_cliente int not NULL, DS_evento varchar(20), occured_at bigint)',
     'CREATE TABLE IF NOT EXISTS T_loja_online (id SERIAL PRIMARY KEY , ID_compra int NOT NULL, ID_cliente int not null, JS_produtos JSONB not NULL, BO_checkout boolean default FALSE, JS_dados_financeiros JSONB default NULL, DS_evento varchar(20) not NULL, occured_at bigint);',
     'CREATE TABLE IF NOT EXISTS T_fornecedores (id SERIAL PRIMARY KEY, CD_fornecedor varchar(30) NOT NULL, DS_evento varchar(30) NOT NULL, ID_produto int NOT NULL, VL_quantidade int not null, VL_transacao int NOT NULL, occured_at bigint)',
