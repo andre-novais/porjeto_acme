@@ -31,15 +31,12 @@ class Plan_base{
                     console.log(erro)
                     res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
                 } else {
-                    console.log("sucesso")
-                    console.log(resultado)
+                    json['id']=resultado['rows'][0]['id']
                 }
             })
         } else { res.send(`erro_${this.table_name}_${this._valida(json)}`)}
         if (!(res.headersSent)){
-            //let resposta = json
-            //resposta['id'] = id_insert
-           res.status(200).send(json)
+           //res.status(200).send(json)
         }        
     }
     pega_por_id(id,res){
