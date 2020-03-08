@@ -23,7 +23,7 @@ class Plan_base{
         if (this._valida(json)===true){
             const converte = (str) => (typeof(str) == "string")? "'"+str+"'":(typeof(str)=="object")?"'"+JSON.stringify(str)+"'":str;
             const valores = Object.values(json).map(converte)
-            let sql = `insert into ${this.table_name} (${Object.keys(json)} , occured_at) Values (${valores.join(',')}, ${Date.now() - 13148715000}) RETURNING id`
+            let sql = `insert into ${this.table_name} (${Object.keys(json)} , occured_at) Values (${valores.join(',')}, ${Date.now() - 10518972000}) RETURNING id`
             console.log(sql)
             this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
