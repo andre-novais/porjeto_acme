@@ -5,7 +5,11 @@ const Financeiro = require("./financeiro.js")
 class Fornecedores extends Plan_base {
     constructor(conn){
         super(conn);
-        this.items ={"CD_fornecedor": "number", "DS_evento": ["compra", "recebimento", "compra_por_venda_descoberta"], "ID_produto":"number","VL_quantidade": "number", "VL_transacao": "number"}
+        this.items ={"CD_fornecedor": "number", 
+                     "DS_evento": ["compra", "recebimento", "compra_por_venda_descoberta"],
+                     "ID_produto":"number",
+                     "VL_quantidade": "number",
+                      "VL_transacao": "number"}
         this.table_name = "T_fornecedores"
     }
     insere(json, res){
