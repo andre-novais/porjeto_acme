@@ -25,21 +25,21 @@ class Plan_base{
             const valores = Object.values(json).map(converte)
             let sql = `insert into ${this.table_name} (${Object.keys(json)} , occured_at) Values (${valores.join(',')}, ${Date.now() - 15778458000}) RETURNING id`
             console.log(sql)
-            let id_insert = this.conn.query(sql, (erro, resultado) => {
+            this.conn.query(sql, (erro, resultado) => {
                 if(erro) {
 
                     console.log(erro)
                     res.send(`erro_${this.table_name}_${JSON.stringify(erro)}`)
                 } else {
                     console.log("sucesso")
-                    this.resultado = resultado
+                    console.log(resultado)
                 }
             })
         } else { res.send(`erro_${this.table_name}_${this._valida(json)}`)}
         if (!(res.headersSent)){
-            let resposta = json
-            resposta['id'] = id_insert
-           res.status(200).send(resposta)
+            //let resposta = json
+            //resposta['id'] = id_insert
+           res.status(200).send(json)
         }        
     }
     pega_por_id(id,res){
