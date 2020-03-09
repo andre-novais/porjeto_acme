@@ -3,7 +3,10 @@ const Plan_base = require("./plan_base.js")
 class Crm extends Plan_base {
     constructor(conn){
         super(conn);
-        this.items ={"ID_cliente": "number", "DS_evento": ["cliente_novo", "cliente_inativado", "cliente_ativado"]}
+        this.items ={
+                        "ID_cliente": "number",
+                        "DS_evento": ["cliente_novo", "cliente_inativado", "cliente_ativado"]
+                    }
         this.table_name = "T_crm"
     }
     insere(json, res){
